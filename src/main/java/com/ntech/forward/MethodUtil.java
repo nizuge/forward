@@ -59,7 +59,7 @@ public class MethodUtil {
 		logger.info("*************START***********");
 		String SDKreply;
 		String API = (String) request.getAttribute("API");
-		String api = (String) request.getAttribute("chargeAPI");
+		String api = (String) request.getAttribute("api");
 		header.clear();
 		param.clear();
 		file.clear();
@@ -71,7 +71,7 @@ public class MethodUtil {
 		if (api != null && api.equals("face")) {
 			galleries = (List<String>) request.getAttribute("galleries");
 			String inputGalleries = request.getParameter("galleries");
-			if (galleries.size() != 0 && (inputGalleries == null || inputGalleries.equals("")))
+			if (inputGalleries == null || inputGalleries.equals(""))
 				param.put("galleries", userName);
 		}
 
@@ -90,10 +90,7 @@ public class MethodUtil {
 					if (item.isFormField()) {
 						//文本
 						String filedName = item.getFieldName();
-						String value = item.getString();
-						logger.info(item.getString("utf-8"));
-						value = URLEncoder.encode(value,"iso-8859-1");
-						value = URLDecoder.decode(value,"utf-8");
+						String value = item.getString("utf-8");
 						if (filedName.startsWith("galleries")) {
 							logger.info("inputGaleries :" + value);
 							StringBuilder galleryValue = new StringBuilder();
@@ -137,9 +134,7 @@ public class MethodUtil {
 
 				return null;
 			} catch (UnsupportedEncodingException e) {
-				logger.error(e.getMessage());
 				e.printStackTrace();
-				return null;
 			}
 		}
 		//获取表单文本数据

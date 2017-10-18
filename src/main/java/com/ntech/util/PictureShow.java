@@ -54,7 +54,7 @@ public class PictureShow {
 				   outputStream.write(bytes, bytesWritten, byteCount);
 					   bytesWritten += byteCount;
 				   }*/
-	        	   return "data:image/jpeg;base64,"+Base64Encrypt.byteArrayToString(b);
+	        	   return "data:image;base64,"+Base64Encrypt.byteArrayToString(b);
 	           }
 		} catch (MalformedURLException e) {
 			logger.error(e.getMessage());

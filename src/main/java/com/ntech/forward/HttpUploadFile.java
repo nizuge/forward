@@ -29,7 +29,7 @@ public class HttpUploadFile {
 	private static HttpUploadFile instance;
 	//单例模式
 	private HttpUploadFile() {}
-	  public static HttpUploadFile getInstance(){    //对获取实例的方法进行同步
+	  public static HttpUploadFile getInstance(){    
 	         if (instance == null){
 	             synchronized(HttpUploadFile.class){
 	                if (instance == null)
