@@ -125,6 +125,10 @@ var num = 0;
 
 function detectUrl() {
     let inputUrl=$("#inputUrlDetect").val();
+    if(inputUrl.length=0||inputUrl==""){
+        alert("url不能为空");
+        return false;
+    }
     $('#imgShowDetect').attr("src", inputUrl);
     detectReq(inputUrl)
 }
@@ -336,6 +340,10 @@ var leftUploadFileCol;
 var rightUploadFileCol;
 
 function verifyUrlCol(id) {
+    if($("#inputUrlCol" + id).val()==""){
+        alert("url不能未空");
+        return false;
+    }
     verifyReqCol($("#inputUrlCol" + id).val(), id);
 }
 
@@ -719,6 +727,10 @@ var rightUploadFile
 
 //人脸对比url处理
 function verifyUrl(id) {
+    if($("#inputUrl" + id).val()==""){
+        alert("url不能未空");
+        return false;
+    }
     verifyReq($("#inputUrl" + id).val(), id);
 }
 
@@ -741,7 +753,12 @@ function uploadPicVerify(obj, id) {
             //根据图片比例调整原图大小
             resizePic(imgShow,widthImg,heightImg);
             let PicBaseText;
-
+            if(id===1){
+                leftUploadFile=file;
+            }
+            if(id===2){
+                rightUploadFile=file;
+            }
             while(widthImg>=4000||heightImg>=4000){
                 PicBaseText=compress(imgShow,widthImg*0.5,heightImg*0.5,1);
                 img.src=PicBaseText;
