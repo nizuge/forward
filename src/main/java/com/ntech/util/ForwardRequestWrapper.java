@@ -48,6 +48,7 @@ public class ForwardRequestWrapper extends HttpServletRequestWrapper {
 		request.setAttribute("userName",customer.getName());
 		request.setAttribute("customer",customer);
 		request.setAttribute("Method",request.getMethod());
+		//当Method为PUT时从流中获取参数
 		if(request.getMethod().equals("PUT")){
 			Map<String,String> param = new HashMap<String,String>();
 			try {

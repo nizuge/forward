@@ -26,6 +26,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -208,6 +209,7 @@ public class ForwardController {
     @ResponseBody
     public String faceMeta(@PathVariable("version")String version,@PathVariable("meta")String meta, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        meta = URLEncoder.encode(meta,"utf-8");
         logger.info("*****enter Controller*****");
         String userName = (String)request.getAttribute("userName");
         StringBuilder API = new StringBuilder("/").append(version).append("/face/gallery/").append(userName).append("/meta/").append(meta);
@@ -255,6 +257,7 @@ public class ForwardController {
     @ResponseBody
     public String faceMetaGallery(@PathVariable("version")String version,@PathVariable("gallery")String galleryName,@PathVariable("meta")String meta, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        meta = URLEncoder.encode(meta,"utf-8");
         logger.info("*****enter Controller*****");
         String userName = (String)request.getAttribute("userName");
         if(!galleryName.equals(userName))
